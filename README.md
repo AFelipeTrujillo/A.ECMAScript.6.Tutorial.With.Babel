@@ -157,3 +157,9 @@ class Lorry extends Vehicle
 	}
 }
 ```
+
+Test Code:
+```
+var c = new Car('Andres',4,4,'yellow',4000);
+c.render();
+```
