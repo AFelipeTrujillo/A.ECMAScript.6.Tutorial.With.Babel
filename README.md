@@ -1,40 +1,159 @@
-# A GulpJS Tutorial #
+# A ES2015 Tutorial With Babel & Gulp #
 
-Gulp is a build system which allows automating task in common developing task, such as minification, livereload, image compression and others. In this repository, you will find a basic template to start with GulpJS and a simple file structure to get it.
+##What is Babel?##
 
-![jv81.png](https://andresfelipetrujillodotcom1.files.wordpress.com/2016/07/what-is-gulpjs.jpg)
+Basically, Babel is a ECMAScript 6 to ECMACScript 5 compiler. This tools allows to use
+ES6 features in our projects. The process is simple, firstly, you shoul learn about new
+standar, such as let and const vars, arrow functions, classes, template string, default
+values and modules. Secondly, prepeare a task with **gulp** and **gulp-babel** 
+(see more later) and finally use **browserSync**
 
-### Documentation: https://andresfelipetrujillo.com/2016/07/21/a-gulpjs-tutorial-with-example-and-repo-to-test ###
+> This repositories is a fork from https://github.com/AFelipeTrujillo/A.GulpJS.Tutorial
 
+##Waht is GulpJS?##
+
+More: https://github.com/AFelipeTrujillo/A.GulpJS.Tutorial
+
+##Installation##
 
 ```
-git clone https://github.com/AFelipeTrujillo/A.GulpJS.Tutorial.git
-cd a.gulpjs.tutorial
+git clone http://
 npm install
 gulp
 ```
 
-## Docker ##
+##ES6 Feature##
 
-Finally, I created a docker container with the basic configuration for gulp. Next, I am going to show you the Dockerfile and how you can run it.
+### Let and Const vars###
+Now, we can declarate variables with **let** instead of **var**. 
+Next code generates an error, because *x* is defined into IF block so it is
+inaccessible in others scopes. 
 
-**Dockerfile**
+ES6 Code:
 ```
-FROM node:argon
-RUN mkdir -p /usr/app
-COPY package.json /usr/app
-COPY gulpfile.js /usr/app
-WORKDIR /usr/app
-RUN npm install gulp -g
-RUN npm install
-EXPOSE 8080
-CMD ["gulp"]
-```
-
-On repositorie folder, run:
-```
-docker build -t {{your-tag}}/gulp .
-docker run -it -v /{{your-absolute-path}}/src:/usr/app/src -v /{{your-absolute-path}}/build:/usr/app/build {{your-tag}}/gulp
+(
+	function(){
+		console.log(x);
+		if(true){
+			let x = 'Hello Let !';
+		}
+		console.log(x);		
+	}
+)();
 ```
 
-Cheers !! :beer: 
+Compiled Code:
+```
+'use strict';
+
+(function () {
+	console.log(x);
+	if (true) {
+		var _x = 'Hello Let !';
+	}
+	console.log(x);
+})();
+```
+Also, we can create constant variables, with reserved word **const** which 
+you can only read in time execution and cannot modify. Let's play.
+
+ES6 Code:
+```
+(
+	function(){
+		const PI = 3.15;
+		PI = 2;		
+	}
+)();
+```
+
+Compiled Message:
+```
+scripts.js: "PI" is read-only
+```
+
+###Arrow Functions##
+This feature help us in create code clearer and cleaner than the past. Next
+function takes two arguments (numbers) and sum.
+
+ES6 Code:
+```
+let sum = (x,y) => x + y;
+```
+
+Compiled Code:
+```
+var sum = function sum(x, y) {
+    return x + y;
+};
+```
+
+Other example:
+
+ES6 Code
+```
+var a = [
+    "Hydrogen",
+    "Helium",
+    "Lithium",
+    "Beryl­lium"
+];
+		
+var aLength = a.map(s => s.length)
+```
+
+Compiled Code:
+```
+var a = ["Hydrogen", "Helium", "Lithium", "Beryl­lium"];
+
+var aLength = a.map(function (s) {
+    return s.length;
+});
+```
+
+More info: https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Funciones/Arrow_functions
+
+###Clases###
+
+With ES6, we can use classes almost the same to ES5 contruct functions. Also,
+we will be able to use inheritance with **extends**.
+
+```
+class Vehicle
+{
+	constructor(owner,numDoors,numTires){
+		this.owner = owner;
+		this.numDoors = numDoors;
+		this.numTires = numTires;		
+	}
+	
+	render() {
+		return `The ${this.owner}'s vehicle has ${this.numDoors} door(s) and ${this.numTires} tires`;
+	}
+}
+
+class Car extends Vehicle
+{
+	constructor(owner,numDoors,numTires,color,price){
+		super(owner,numDoors,numTires);
+		this.color = color;
+		this.price = price;
+	}
+	
+	render(){
+		return `${super.render()}. Also it is ${this.color} and its cost is USD ${this.price}`;
+	}
+}
+
+class Lorry extends Vehicle
+{
+	constructor(owner,numDoors,numTires,lorryload){
+		super(owner,numDoors,numTires);
+		this.lorryload = lorryload;
+	}
+	
+	render(){
+		return `${super.render()}. Also it can load ${this.lorryload} tons`;
+	}
+}
+```
