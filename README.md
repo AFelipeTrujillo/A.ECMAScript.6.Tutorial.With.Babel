@@ -163,3 +163,66 @@ Test Code:
 var c = new Car('Andres',4,4,'yellow',4000);
 c.render();
 ```
+###Template Strings###
+
+With ES6, we can interpolate strings much simpler and better. Look
+the next example:
+
+ES6 Code:
+```
+let h = 'Hi';
+let w = 'World!';
+
+console.log(`I just wanna say ${h} ${w}`);
+``` 
+
+Compiled Code:
+```
+'use strict';
+
+var h = 'Hi';
+var w = 'World!';
+
+console.log('I just wanna say ' + h + ' ' + w);
+```
+
+###Destructuring###
+
+Now, we can get new ways to assing values to Array
+and Objects.
+
+ES6 Code:
+```
+let [a,b] = ['Javascript','Rocks']
+
+let hero = {name : 'Han', lasname : 'Solo'}
+var { firstName, lastName } = hero;
+
+let fn = () => {
+	return ['Dark','Vader']
+}
+
+let sith = fn();
+```
+
+Compiled Code:
+```
+'use strict';
+
+var a = 'Javascript';
+var b = 'Rocks';
+
+
+var hero = { name: 'Han', lasname: 'Solo' };
+var firstName = hero.firstName;
+var lastName = hero.lastName;
+
+
+var fn = function fn() {
+	return ['Dark', 'Vader'];
+};
+
+var sith = fn();
+```
+
+###Default Values###
