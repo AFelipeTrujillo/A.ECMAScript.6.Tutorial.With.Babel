@@ -8,14 +8,15 @@ var uglify = require('gulp-uglify');
 
 gulp.task('babel',function(){
 	gulp.src('src/scripts/*.js')
-	.pipe(concat('scripts.js'))
 	.pipe(plumber())
+	.pipe(concat('scripts.js'))
 	.pipe(babel())
 	.pipe(gulp.dest('src/es5/'))
 });
 
 gulp.task('js',function(){
 	gulp.src('src/es5/*.js')
+	.pipe(plumber())
 	.pipe(uglify())
 	.pipe(gulp.dest('build/scripts/'));
 });
