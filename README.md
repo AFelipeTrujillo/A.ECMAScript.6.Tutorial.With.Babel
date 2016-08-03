@@ -41,4 +41,4 @@ EXPOSE 8080
 CMD ["gulp"]
 ```
 
-Inspired By: Some Beers & Myhem https://open.spotify.com/album/4O9K2VUsGve0wJl49AG0Mu
+**Inspired By**: Some Beers & [Mayhem](https://open.spotify.com/album/4O9K2VUsGve0wJl49AG0Mu)
