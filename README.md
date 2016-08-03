@@ -14,6 +14,8 @@ values and modules. Secondly, prepeare a task with **gulp** and **gulp-babel**
 
 More: https://github.com/AFelipeTrujillo/A.GulpJS.Tutorial
 
+Post: http://wp.me/p4bZsK-gm
+
 ##Installation##
 
 ```
@@ -22,3 +24,5 @@ cd A.ECMAScript.6.Tutorial.With.Babel
 npm install
 gulp
 ```
+
+Find out more: http://wp.me/p4bZsK-io
