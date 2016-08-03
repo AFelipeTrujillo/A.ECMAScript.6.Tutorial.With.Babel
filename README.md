@@ -17,7 +17,8 @@ More: https://github.com/AFelipeTrujillo/A.GulpJS.Tutorial
 ##Installation##
 
 ```
-git clone http://
+git clone https://github.com/AFelipeTrujillo/A.ECMAScript.6.Tutorial.With.Babel.git
+cd A.ECMAScript.6.Tutorial.With.Babel
 npm install
 gulp
 ```
