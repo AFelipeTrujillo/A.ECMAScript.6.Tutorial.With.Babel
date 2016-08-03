@@ -25,11 +25,11 @@ npm install
 gulp
 ```
 
-Find out more: http://wp.me/p4bZsK-io
+**Find out more**: http://wp.me/p4bZsK-io
 
 ##Dockerfile Definition##
 
-```
+```unix
 FROM node:argon
 RUN mkdir -p /usr/app
 COPY package.json /usr/app
